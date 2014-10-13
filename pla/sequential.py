@@ -8,10 +8,9 @@ for line in open('data1', 'r').readlines():
 
 
 w = [0.0, 0.0, 0.0, 0.0, 0.0]
-i = -1
+i = 0
 
 while True:
-    i += 1
     for d in data:
         x = d['x']
         product = w[0] * x[0] + w[1] * x[1] + w[2] * x[2] + w[3] * x[3] + w[4]
@@ -21,15 +20,15 @@ while True:
             w[2] += x[2]
             w[3] += x[3]
             w[4] += d['y']
-            break
+            i += 1
         elif product > 0 and d['y'] < 0:
             w[0] -= x[0]
             w[1] -= x[1]
             w[2] -= x[2]
             w[3] -= x[3]
             w[4] += d['y']
-            break
+            i += 1
     else:
-        print(w)
-        print(i, 'times')
+        print('w: %s' % w)
+        print('%d times' % i)
         break
